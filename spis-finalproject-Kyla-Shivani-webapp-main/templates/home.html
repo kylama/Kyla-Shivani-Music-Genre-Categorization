@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+ {% block title %}Song Genre Categorizer{% endblock %}
+
+ {% block content %}
+      <h1>Song Genre Categorizer</h1>
+      <form action="/song_result" method="post">
+        <label for="song">Song Name:</label><br>
+        <input type="text" id="song" name="song"><br>
+        <label for="artist">Artist:</label><br>
+        <input type="text" id="artist" name="artist"><br><br>
+        <input type="submit" value="Find the Genre"><br><br>
+        <label for="table">Our testing data:</label><br>
+      </form>  
+      <iframe
+        width = "400"
+        height = "8500"
+      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRm6lxTKXQDRTyPLJwdC8DGzZ_zoS0TY28tz6hr_sy5xcXhcAIZ8bPTibB_LwMVMT-3rvuq2NhJv12p/pubhtml?gid=449912101&single=true">
+      </iframe>
+ {% endblock %}
