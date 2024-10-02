@@ -3,7 +3,7 @@ ipython
 gunicorn
 numpy
 pandas
-dotenv
+python-dotenv
 os
 base64
 requests
