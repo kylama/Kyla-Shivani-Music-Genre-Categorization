@@ -6,4 +6,4 @@ pandas
 python-dotenv
 requests
 app
-sklearn
+scikit-learn
