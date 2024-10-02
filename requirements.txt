@@ -2,7 +2,6 @@ flask>=2.2.3
 ipython
 gunicorn
 numpy
-pickle
 pandas
 dotenv
 os
