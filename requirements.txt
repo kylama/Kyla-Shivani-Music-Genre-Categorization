@@ -6,3 +6,4 @@ pandas
 python-dotenv
 requests
 app
+-U scikit-learn scipy matplotlib
