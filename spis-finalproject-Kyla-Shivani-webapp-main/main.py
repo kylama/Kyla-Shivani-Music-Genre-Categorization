@@ -5,11 +5,8 @@ from flask import request
 app = Flask(__name__)
 
 import pickle
-
 import numpy as np
 import pandas as pd
-from sklearn.preprocessing import StandardScaler
-from sklearn.datasets import make_blobs
 
 # Spotify API libraries
 from dotenv import load_dotenv
@@ -62,10 +59,6 @@ def get_audio_features(song_id):
   data = pd.DataFrame([json_result])
   return data
 
-token = get_token()
-result = search_for_song("Blackbird", "The Beatles")
-#print(result["name"])
-
 @app.route('/')
 def render_home():
     return render_template('home.html')
@@ -77,39 +70,11 @@ def categorize():
   input_song_id = find_id(request.form['song'], request.form['artist'])
   return render_template('song_result.html', genre = genre_result, id = input_song_id)
 
+genre_list = np.array(['pop', 'hip hop', 'rock', 'country', 'metal', 'R&B', 'Dance/Electronics', 'Folk/Acoustic', 'latin', 'blues', 'easy listening', 'jazz', 'World/Traditional', 'classical', 'none'])
 def num_to_genre(holder: int) -> str:
   """Takes a number and returns a genre."""
-  if holder == 1:
-    holder = 'pop'
-  elif holder == 2:
-    holder = 'hip hop'
-  elif holder == 3:
-    holder = 'rock'
-  elif holder == 4:
-    holder = 'country'
-  elif holder == 5:
-    holder = 'metal'
-  elif holder == 6:
-    holder = 'R&B'
-  elif holder == 7:
-    holder = 'Dance/Electronics'
-  elif holder == 8:
-    holder = 'Folk/Acoustic'
-  elif holder == 9:
-    holder = 'latin'
-  elif holder == 10:
-    holder = 'blues'
-  elif holder == 11:
-    holder = 'easy listening'
-  elif holder == 12:
-    holder = 'jazz'
-  elif holder == 13:
-    holder = 'World/Traditional'
-  elif holder == 14:
-    holder = 'classical'
-  else:
-    holder = 'none'
-  return holder
+  genre_string = np.array2string(genre_list[holder - 1])
+  return genre_string[2:-2]
 
 # load saved model
 with open('model_pkl' , 'rb') as f:
@@ -119,7 +84,6 @@ def find_song(song, artist):
     song_result = search_for_song(song, artist)
     id = song_result.get('tracks').get("items")[0].get("id")
     song_data = get_audio_features(id)
-    #song_data = song_data.drop(['analysis_url', 'duration', 'id', 'mode', 'time_signature', 'track_href', 'type', 'uri'])
     
     danceability = song_data['danceability']
     energy = song_data['energy']
@@ -140,10 +104,6 @@ def find_song(song, artist):
 def find_id(song, artist):
     song_result = search_for_song(song, artist)
     return song_result.get('tracks').get("items")[0].get("id")
-
-# test
-input_song = find_song("Blackbird", "The Beatles")
-print(num_to_genre(lr.predict(input_song)))
 
 if __name__ == "__main__":
    app.run(host='0.0.0.0')
