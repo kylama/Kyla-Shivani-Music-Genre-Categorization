@@ -1,1 +1,2 @@
-# Kyla-Shivani-Music-Genre-Categorization
+DevContainer and other configuration for developing Flask projects
+with GitHub Codespaces
