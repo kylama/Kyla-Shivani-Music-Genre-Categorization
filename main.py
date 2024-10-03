@@ -23,7 +23,7 @@ print(client_id)
 print(client_secret)
 
 def get_token():
-  auth_string = str(client_id) + ":" + str(client_secret)
+  auth_string = client_id + ":" + client_secret
   print(auth_string)
   auth_bytes = auth_string.encode("utf-8")
   print(auth_bytes)
