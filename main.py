@@ -19,18 +19,25 @@ load_dotenv()
 
 client_id = os.getenv("CLIENT_ID")
 client_secret = os.getenv("CLIENT_SECRET")
+print(client_id)
+print(client_secret)
 
 def get_token():
   auth_string = str(client_id) + ":" + str(client_secret)
+  print(auth_string)
   auth_bytes = auth_string.encode("utf-8")
+  print(auth_bytes)
   auth_base64 = str(base64.b64encode(auth_bytes), "utf-8")
+  print(auth_base64)
   
   url = "https://accounts.spotify.com/api/token"
   headers = {
     "Authorization": "Basic " + auth_base64,
     "Content-Type": "application/x-www-form-urlencoded"
   }
+  print(headers)
   data = {"grant_type": "client_credentials"}
+  print(data)
   result = post(url, headers = headers, data = data)
   print(result)
   json_result = json.loads(result.content)
