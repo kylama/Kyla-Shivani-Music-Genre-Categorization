@@ -15,3 +15,5 @@ The model is loaded to a web application that allows the user to search for any 
 The libraries NumPy, Matplotlib, Pandas, TensorFlow, and Scikit-learn were used to create the model. The web application utilizes Spotify API to retrieve song data from Spotify's database, HTML and CSS to style the webpage, and Python Flask backend architecture with server side rendering to deploy the application through Render.
 
 Link to the web application: https://kyla-shivani-music-genre-categorization.onrender.com
+
+Collaborators: Kyla Ma, Shivani Sridhar
