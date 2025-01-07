@@ -1,6 +1,6 @@
 # Music Genre Categorization Model
 
-This k-nearest neighbors classification machine learning model intakes 10 features of a song (danceability, energy, key, loudness, speechiness, acousticness, instrumentalness, liveness, valence, and tempo) and predicts the genre of a song.
+This k-nearest neighbors classification machine learning model intakes 10 features of a song (danceability, energy, key, loudness, speechiness, acousticness, instrumentalness, liveness, valence, and tempo) and predicts the genre of the song.
 
 ## Training and Testing
 
